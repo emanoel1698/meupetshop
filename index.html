@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Essa é a loja do seu bichinho</title>
+    <!-- Utilização do Google Fonts para inserção de ícones -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <style>
+      /* Define o estilo do corpo da página*/
+      body {
+        background: linear-gradient(135deg, #004d40, #00e676); /* Define um fundo com um gradiente linear de 135 graus, do verde escuro (#004d40) ao verde neon (#00e676) */
+        display: flex; /* Usa flex para alinhar o conteúdo */
+        justify-content: left; /* Define o conteúdo horizontalmente a esquerda */
+        height: 100vh; /* Define a altura do corpo para 100% da altura da janela de visualização */
+        margin: 0; /* Remove qualquer margem padrão ao redor do corpo */
+        flex-direction: column; /* Organiza os itens em uma coluna */
+      }
+
+      /* Define o estilo de margem para header */
+      header {
+        display: flex; /* Usa flexbox para alinhar o conteúdo do cabeçalho */
+        align-items: center; /* Alinha verticalmente o logotipo e a navegação */
+        justify-content: center; /* Distribui espaço uniformemente entre o logotipo e a navegação */
+        width: 100%; /* Define a largura do cabeçalho para 100% */
+        background-color: #F7F7F7; /* Define a cor de fundo do cabeçalho */
+        position: fixed; /* Fixa o cabeçalho no topo da página */
+        top: 0; /* Define a posição do cabeçalho no topo */
+        z-index: 1000; /* Garante que o cabeçalho fique acima de outros elementos */
+      }
+
+      /* Define o estilo da fonte */
+      nav {
+        font-family: Verdana; /* Define a fonte usada na navegação */
+        font-size: 18px; /* Define o tamanho da fonte */
+      }
+
+       /* Aplica a cor aos links dentro de nav */
+      nav a { 
+        color:#404040; /* Define a cor dos links */
+        text-decoration: none; /* Remove o sublinhado dos links */
+        display: flex; /* Usa flexbox para alinhar o conteúdo dos links */
+        align-items: center; /* Alinha verticalmente os ícones e o texto dos links */
+      }
+
+      /* Estilo para remover os marcadores da lista e adicionar espaçamento entre os itens */
+      nav ul {
+        list-style-type: none; /* Remove os marcadores da lista */
+        padding: 0; /* Remove o deslocamento padrão dos itens para direita */
+      }
+
+      /* Define os itens em linha e adiciona espações a direita de cada item */
+      nav ul li {
+        display: inline-flex; /* Exibe os itens da lista em linha */
+        margin-right: 20px; /* Adiciona espaçamento à direita de cada item */
+      }
+
+      .material-icons {
+        margin-right: 5px;
+      }
+
+      /* Adiciona espaço em todos os lados da imagem */
+      .logo-vitrine-pet {
+        margin-top: 5px;
+        margin-left: 10px;
+        margin-right: 30px;
+        margin-bottom: 5px;
+      }
+
+      section {
+        scroll-margin-top: 115px; /* Adiciona margem superior ao rolar para seções */
+      }
+
+      #home{
+        background-color: #ddd; /* Define a cor de fundo */
+        display: flex; /* Define um layout flexível */
+        border: 4px solid #555;
+        border-radius: 10px;
+        padding: 10px; /* Adiciona espaçamento interno */
+        justify-content: center;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Adiciona uma sombra */
+        width: 97%;
+        margin-top: 120px;
+        margin-left: 5px;
+        scroll-margin-top: 120px; /* adiciona 120 pixels de margem superior, para que fique visível e não seja encoberto pelo cabeçalho */
+      }
+
+      .foto-home{
+        border-radius: 10px;
+        object-fit: contain;
+      }
+
+      /* Aplica estilos específico à seção com o ID="nossahistoria" */
+      #nossahistoria {
+        background-color: #004d40; /* Define a cor de fundo da seção */
+        padding: 40px; /* Adiciona espaçamento interno ao redor do conteúdo da seção */
+        border: 1px solid #ccc; /* Adiciona uma borda ao redor da seção */
+        margin-top: 5px; /* Adiciona margem superior para separar a seção de outros elementos */
+        color: #ffffff; /* Define a cor do texto como branco para melhor contraste */
+        font-size: 20px; /* Define o tamanho da fonte para 18px */
+        line-height: 1.6; /* Define o espaçamento entre linhas para melhorar a legibilidade */
+        font-family: lucida sans; /* Define a fonte como Arial */
+        text-align: justify; /* Justifica o texto dentro da seção */
+        box-sizing: border-box; 
+        margin: 60px;
+      }
+
+      #nossahistoria h2 {
+        color: antiquewhite; /* Define a cor do título como amarelo para destacar */
+        font-size: 24px; /* Define o tamanho da fonte do título para 24px */
+        margin-bottom: 10px; /* Adiciona margem inferior para separar o título do conteúdo */
+        border-top: none; /* Remove a borda superior somente para h2 dentro de #nossahistoria*/
+      }
+
+      h2 {
+        scroll-margin-top: 115px; /* Adiciona margem superior ao rolar para seções */
+        padding: 10px 0; /* Define espaçamento interno ao redor de um elemento, 20px superior/inferior e 0 laterais esquerda e direita */
+      }
+
+      #depoimentoclientes {
+        text-align: center; /* Centraliza o texto */
+        padding: 20px; /* Adiciona espaçamento interno */
+        background-color: #f9f9f9; /* Define a cor de fundo */
+      }
+
+      #depoimentoclientes h2 {
+        color: #000;
+      }
+
+      .depoimentos-container {
+        display: flex; /* Define um layout flexível */
+        justify-content: center; /* Centraliza os itens horizontalmente */
+        flex-wrap:wrap; /* Permite que os itens quebrem linha */
+        gap: 20px; /* Adiciona espaço entre os itens */
+      }
+
+      .depoimento {
+        background-color: #fff; /* Define a cor de fundo branca */
+        border: 1px solid #ddd; /* Adiciona uma borda cinza clara */
+        border-radius: 10px; /* Arredonda os cantos */
+        padding: 20px; /* Adiciona espaçamento interno */
+        max-width: 300px; /* Define a largura máxima */
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Adiciona uma sombra */
+        position: relative; /*É importante para que os elementos filhos com position: absolute se refiram a este contêiner */
+      }
+
+      .foto-cliente {
+        border-radius: 50%; /* Arredonda a imagem para parecer um círculo */
+        width: 80px; /* Define a largura da imagem */
+        height: 80px; /* Define a altura da imagem */
+        object-fit: cover; /* Garante que a imagem cubra o contêiner */
+      }
+
+      .nome-cliente {
+        font-weight: bold; /* Define o texto em negrito */
+        margin-top: 10px; /* Adiciona margem superior */
+      }
+
+      .texto-depoimento {
+        font-style: italic; /* Define o texto em itálico */
+        color: #555; /* Define a cor do texto */
+      }
+
+      .data-depoimento {
+        font-style: italic; /* Define o texto em itálico */
+        color: #555; /* Define a cor do texto */
+        position: absolute; /* Faz com que este elemento seja posicionado em relação ao contêiner pai que está com (position: relative) */
+        top: 10px; /* Distância do topo do contêiner pai */
+        left: 10px; /* Distância da esquerda do contêiner pai */
+      }
+
+      /* Aplica estilos específico à seção com o ID="contatos" */
+      #contatos {
+        background-color:#004d40;
+        padding: 20px;
+        color: #ffffff;
+        font-size: 20px;
+        font-family: Lucida Sans;
+        margin: 60px;
+      }
+
+      #contatos a {
+        color: #ffeb3b;  
+      }
+
+      #contatos h2 {
+        margin: -20px;
+      }
+
+      /* Define o estilo do contêiner das imagens */
+      .conteiner {
+        display: flex; /* Usa flex para alinhar as imagens em linha */
+        overflow-x:scroll; /* Adiciona uma barra de rolagem horizontal */
+        white-space: nowrap; /* Atributo nowrap - impede que as imagens quebrem para a próxima linha */
+        margin:left; /* Adiciona margem a esquerda do contêiner */
+        width: 98%; /* Define a largura do contêiner na página */
+        margin: 20px;
+      }
+
+      /* Define o estilo de cada item (checkbox + imagem) */
+      .item {
+        display: flex; /* Usa flex para alinhar o checkbox e a imagem em linha */
+        align-items: center; /* Alinha o checkbox e a imagem verticalmente ao centro */
+        margin-left: 5px; /* Adiciona espaço à direita de cada item */
+      }
+
+      /* Define o estilo de figure */
+      figure {
+        display: flex; /* Usa flex para alinhar as imagens */
+        flex-direction: column; /* Alinha os itens em uma coluna */
+        align-items: center; /* Centraliza os itens horizontalmente */
+        padding: 40px 40px; /* Define o preenchimento interno do elemento */
+        margin: 10px; /* Define a margem ao redor do elemento */
+        border: 2px solid #ccc; /* Define uma borda cinza clara de 2px */
+        border-radius: 10px; /* Define bordas arredondadas */
+        background-color: coral; /* Define a cor de fundo */
+        user-select: none; /* Impede a seleção de texto dentro do elemento */
+        text-align: center; /* Centraliza o texto */
+      }
+
+      /* Define o estilo de figcaption */
+      figcaption {
+        text-align: center; /* Centraliza o texto horizontalmente */
+      }
+
+      /* Define o estilo das imagens dentro de cada item */
+      .item img {
+        margin: left auto; /* Adiciona espaço à esquerda de cada imagem */
+      }
+
+      /* Define uma borda fazendo contorno nas imagens de cada produto*/
+      .contorno-img {
+        border-radius: 10px; /* Define o raio das bordas arredondadas */
+        border: 2px solid white; /* Define a largura e a cor do contorno */
+        display: inline-block; /* Faz com que o contorno se ajuste ao tamanho da imagem */
+      }
+
+      /* Oculta o texto da tag h1 */
+      .fonte-titulo {
+        display: none;
+      }
+
+      /* Define o estilo de fonte */
+      .minha-fonte {
+        font-family:Verdana;
+        font-size: large; /* Define o tamanho da fonte como grande */
+        color: antiquewhite; /* Define a cor da fonte */
+        margin: 10px; /* Define a margem ao redor do elemento */
+        margin-left: 0;
+      }
+
+      /* Classe para definir a fonte e a cor do texto dos serviços oferecidos */
+      .fonte-produtos-servicos {
+        font-size: larger; /* Define o tamanho da fonte como grande */
+        color: black; /* Define a cor da fonte */
+        margin: 10px; /* Define a margem ao redor do elemento */
+      }
+
+      /*Classe para estilizar os botões que funcionam como checkboxes dos serviços oferecidos*/
+      .btn-checkbox {
+        display: inline-block; /* Exibe o elemento como um bloco inline */
+        padding: 40px 40px; /* Define o preenchimento interno do elemento */
+        margin: 10px; /* Define a margem ao redor do elemento */
+        border: 2px solid #ccc; /* Define uma borda cinza clara de 2px */
+        border-radius: 10px; /* Define bordas arredondadas */
+        background-color: coral; /* Define a cor de fundo */
+        user-select: none; /* Impede a seleção de texto dentro do elemento */
+        text-align: center; /* Centraliza o texto */
+      }
+
+      /* Classe para esconder os checkboxes  dos serviços oferecidos */
+      .btn-checkbox input[type="checkbox"] {
+        display: none; /* Esconde o checkbox */
+      }
+
+      /* Classe para estilizar o botão quando o checkbox  dos serviços oferecidos estiver marcado */
+      .btn-checkbox input[type="checkbox"]:checked + label {
+        display: inline-block; /* Exibe o elemento como um bloco inline */
+        padding: 20px 40px; /* Define o preenchimento interno do elemento */
+        margin: 10px; /* Define a margem ao redor do elemento */
+        border: 2px solid #ccc; /* Define uma borda cinza clara de 2px */
+        border-radius: 10px; /* Define bordas arredondadas */
+        background-color: #4caf50; /* Define a cor de fundo */
+        user-select: none; /* Impede a seleção de texto dentro do elemento */
+        color: white; /* Muda a cor do texto quando o checkbox está marcado */
+      }
+
+      /* Estilo para o botão Enviar */
+      .enviar {
+        background-color: #4caf50; /* Cor de fundo verde atraente */
+        border: none; /* Remove a borda padrão */
+        color: white; /* Cor do texto branca */
+        padding: 15px 32px; /* Espaçamento interno */
+        text-align: center; /* Alinhamento do texto */
+        text-decoration: none; /* Remove sublinhado do texto */
+        display: inline-block; /* Exibe como bloco inline */
+        font-size: 16px; /* Tamanho da fonte */
+        margin: 4px 2px; /* Margem externa */
+        cursor: pointer; /* Cursor de ponteiro ao passar o mouse */
+        box-shadow: 0 9px #999; /* Sombra para efeito 3D */
+        border-radius: 12px; /* Bordas arredondadas */
+        transition: all 0.3s ease; /* Transição suave */
+        margin: 10px;
+      }
+
+      /* Estilo para o botão Enviar ao passar o mouse */
+      .enviar:hover {
+        background-color: #45a049; /* Cor de fundo ao passar o mouse */
+        box-shadow: 0 5px #666; /* Sombra reduzida ao passar o mouse */
+        transform: translateY(-4px); /* Eleva o botão ao passar o mouse */
+      }
+
+      /* Estilo para o botão Enviar ao clicar */
+      .enviar:active {
+        background-color: #3e8e41; /* Cor de fundo ao clicar */
+        box-shadow: 0 5px #666; /* Sombra reduzida ao clicar */
+        transform: translateY(4px); /* Move o botão para baixo ao clicar */
+      }
+
+      /* Estilo para o botão Limpar Dados */
+      .limpar {
+        background-color: #f44336; /* Cor de fundo vermelha atraente */
+        border: none; /* Remove a borda padrão */
+        color: white; /* Cor do texto branca */
+        padding: 15px 32px; /* Espaçamento interno */
+        text-align: center; /* Alinhamento do texto */
+        text-decoration: none; /* Remove sublinhado do texto */
+        display: inline-block; /* Exibe como bloco inline */
+        font-size: 16px; /* Tamanho da fonte */
+        margin: 4px 2px; /* Margem externa */
+        cursor: pointer; /* Cursor de ponteiro ao passar o mouse */
+        box-shadow: 0 9px #999; /* Sombra para efeito 3D */
+        border-radius: 12px; /* Bordas arredondadas */
+        transition: all 0.3s ease; /* Transição suave */
+      }
+
+      /* Estilo para o botão Limpar Dados ao passar o mouse */
+      .limpar:hover {
+        background-color: #e53935; /* Cor de fundo ao passar o mouse */
+        box-shadow: 0 5px #666; /* Sombra reduzida ao passar o mouse */
+        transform: translateY(-4px); /* Eleva o botão ao passar o mouse */
+      }
+
+      /* Estilo para o botão Limpar Dados ao clicar */
+      .limpar:active {
+        background-color: #d32f2f; /* Cor de fundo ao clicar */
+        box-shadow: 0 5px #666; /* Sombra reduzida ao clicar */
+        transform: translateY(4px); /* Move o botão para baixo ao clicar */
+      }
+
+      /* Define a cor dos ícones */
+      .cor-icone {
+        color:coral ;
+      }
+
+      .cor-icone-verde{
+        color:#3e8e41 ;
+      }
+
+      /* Define o tamanho e o peso da fonte */
+      .icone-maior {
+        font-size: 30px; /* Aumenta o tamanho da fonte */
+        font-weight: bold; /* Deixa a fonte em negrito */
+        margin: 10px;
+      }
+      footer {
+        background-color: #f0f0f0;  /* Fundo suave */
+        color: #555; /* Fundo suave */
+        padding: 20px; /* Espaçamento interno */
+        text-align: center; /* Centraliza o texto */
+        font-family: sans-serif; /* tipo da Fonte */
+        border-top: 1px solid #ddd;  /* Linha superior discreta */
+      }
+
+      footer p {
+        margin: 10px 0; /* Espaçamento entre parágrafos */
+        font-size: 14px; /* Tamanho da fonte dos parágrafos */
+      }
+    </style>
+  </head>
+
+  <body> 
+    <header>
+      <!-- Título principal do site -->
+      <h1 class="fonte-titulo">
+        Vitrine Pet - Seu Bicho + Feliz
+      </h1>
+
+      <img
+        src="https://github.com/emanoel1698/meupetshop/blob/main/Logo_VitrinePet.png?raw=true"
+        alt="Logo Vitrine Pet"
+        width="100"
+        class="logo-vitrine-pet"
+      />
+
+      <!-- Navegação principal do site -->
+      <nav>
+        <ul>
+          <!-- Link para a seção Home -->
+          <li>
+            <a href="#home">
+              <span class="material-icons cor-icone">home</span>
+              Home
+            </a>
+          </li>
+
+          <!-- Link para a seção Produtos -->
+          <li>
+            <a href="#produtos">
+              <span class="material-icons cor-icone">production_quantity_limits</span>
+              Produtos</a>
+          </li>
+
+          <!-- Link para a seção Serviços -->
+          <li>
+            <a href="#servicos">
+              <span class="material-icons cor-icone">pets</span>
+              Serviços</a>
+          </li>
+
+          <!-- Link para a seção Nossa História -->
+          <li>
+            <a href="#nossahistoria">
+              <span class="material-icons cor-icone">volunteer_activism</span>
+              Nossa História</a>
+          </li>
+
+          <!-- Link para a seção Depoimento de Clientes -->
+          <li>
+            <a href="#depoimentoclientes">
+              <span class="material-icons cor-icone">connect_without_contact</span>
+              Depoimento de Clientes</a>
+          </li>
+
+          <!-- Link para a seção Contatos -->
+          <li>
+            <a href="#contatos">
+              <span class="material-icons cor-icone">perm_phone_msg</span>
+              Contatos</a>
+          </li>
+        </ul>
+      </nav>  
+    </header>
+
+    <!-- Home do Vitrine Pet-->
+    <div class="home" id="home">
+      <img src="https://github.com/emanoel1698/meupetshop/blob/main/Home_VitrinePet.jpeg?raw=true" 
+        alt="Home Vitrine Pet"
+        width="500px"
+        class="foto-home"
+        >
+    </div>
+
+      <!--Seção de Produtos e Serviços --> 
+      <section id="produtos">
+        <form>
+          <h2 class="minha-fonte">
+            <span class="material-icons cor-icone icone-maior">shopping_cart_checkout</span>
+            Para selecionar algum produtos clique em cima:
+          </h2>
+          <!-- Contêiner das imagens com checkboxes -->
+          <div class="conteiner">
+              <!-- Primeiro item: checkbox + imagem -->
+              <div class="item">
+                <input 
+                  type="checkbox"
+                  id="img1"
+                  name="produtos"
+                  value="racao_cao_adulto"
+                />
+                <label for="img1" 
+                  ><figure>
+                    <img
+                      src="https://github.com/emanoel1698/meupetshop/blob/main/Dog_Health_Adulto.jpeg?raw=true"
+                      alt="Dog_Health_Adulto.jpeg"
+                      class="contorno-img"
+                      width="200px"
+                      height="150px"
+                    />
+                    <figcaption class="fonte-produtos-servicos">
+                      Ração Dog Health Cão Adultos</figcaption>
+                  </figure>
+                </label> <!-- Rótulo associado ao checkbox, contendo a imagem -->
+              </div>
+
+              <!-- Segundo item: checkbox + imagem -->
+              <div class="item">
+                <input 
+                  type="checkbox"
+                  id="img2"
+                  name="produtos"
+                  value="racao_cao_filhote"
+                />
+                <label for="img2" 
+                  ><figure>
+                    <img
+                      src="https://github.com/emanoel1698/meupetshop/blob/main/Dog_Health_Filhote.jpeg?raw=true"
+                      alt="Dog_Health_Filhote.jpeg"
+                      class="contorno-img"
+                      width="200"
+                      height="150"
+                    />
+                    <figcaption class="fonte-produtos-servicos">Ração Dog Health Cão Filhote</figcaption>  
+                  </figure>
+                </label> <!-- Rótulo associado ao checkbox, contendo a imagem -->
+              </div>
+
+              <!-- Terceiro item: checkbox + imagem -->
+              <div class="item">
+                <input 
+                  type="checkbox"
+                  id="img3"
+                  name="produtos"
+                  value="racao_gato_adulto"
+                />
+                <label for="img3" 
+                  ><figure>
+                    <img
+                      src="https://github.com/emanoel1698/meupetshop/blob/main/Cat_Health_Adulto.jpeg?raw=true"
+                      alt="Cat_Health_Adulto.jpeg"
+                      class="contorno-img"
+                      width="200"
+                      height="150"
+                    />
+                    <figcaption class="fonte-produtos-servicos">Ração Gato Adulto</figcaption>  
+                  </figure>
+                </label> <!-- Rótulo associado ao checkbox, contendo a imagem -->
+              </div>
+
+              <!-- Quarto item: checkbox + imagem -->
+              <div class="item">
+                <input 
+                  type="checkbox"
+                  id="img4"
+                  name="produtos"
+                  value="racao_gato_filhote"
+                />
+                <label for="img4" 
+                  ><figure>
+                    <img
+                      src="https://github.com/emanoel1698/meupetshop/blob/main/Cat_Hith_Filhote.jpeg?raw=true"
+                      alt="Cat_Hith_Filhote.jpeg"
+                      class="contorno-img"
+                      width="200"
+                      height="150"
+                    />
+                    <figcaption class="fonte-produtos-servicos">Ração Gato Filhote</figcaption>  
+                  </figure>
+                </label> <!-- Rótulo associado ao checkbox, contendo a imagem -->
+              </div>
+
+              <!-- Quinto item: checkbox + imagem -->
+              <div class="item">
+                <input 
+                  type="checkbox"
+                  id="img5"
+                  name="produtos"
+                  value="Playground_Calopsita"
+                />
+                <label for="img5" 
+                  ><figure>
+                    <img
+                      src="https://github.com/emanoel1698/meupetshop/blob/main/Playground_Calopsita.jpeg?raw=true"
+                      alt="Playground_Calopsita.jpeg"
+                      class="contorno-img"
+                      width="200"
+                      height="150"
+                    />
+                    <figcaption class="fonte-produtos-servicos">Playground para Calopsita</figcaption>  
+                  </figure>
+                </label> <!-- Rótulo associado ao checkbox, contendo a imagem -->
+              </div>
+
+              <!-- Sexto item: checkbox + imagem -->
+              <div class="item">
+                <input 
+                  type="checkbox"
+                  id="img6"
+                  name="produtos"
+                  value="Cama_Gato"
+                />
+                <label for="img6" 
+                  ><figure>
+                    <img
+                      src="https://github.com/emanoel1698/meupetshop/blob/main/Cama_Gato.png?raw=true"
+                      alt="Cama_Gato.png"
+                      class="contorno-img"
+                      width="200"
+                      height="150"
+                    />
+                    <figcaption class="fonte-produtos-servicos">Cama para Gato</figcaption>  
+                  </figure>
+                </label> <!-- Rótulo associado ao checkbox, contendo a imagem -->
+              </div>
+
+              <!-- Setimo item: checkbox + imagem -->
+              <div class="item">
+                <input 
+                  type="checkbox"
+                  id="img7"
+                  name="produtos"
+                  value="Coleira Peitoral Cao Grande"
+                />
+                <label for="img7" 
+                  ><figure>
+                    <img
+                      src="https://github.com/emanoel1698/meupetshop/blob/main/Coleira_Peitoral_Cao_Grande.jpg?raw=true"
+                      alt="Coleira_Peitoral_Cao_Grande.jpg"
+                      class="contorno-img"
+                      width="200"
+                      height="150"
+                    />
+                    <figcaption class="fonte-produtos-servicos">Coleira Peitoral Cão Grande</figcaption>  
+                  </figure>
+                </label> <!-- Rótulo associado ao checkbox, contendo a imagem -->
+              </div>
+              
+              <!-- Oitavo item: checkbox + imagem -->
+              <div class="item">
+                <input 
+                  type="checkbox"
+                  id="img8"
+                  name="produtos"
+                  value="Alimentador Auto Cao Gato"
+                />
+                <label for="img8" 
+                  ><figure>
+                    <img
+                      src="https://github.com/emanoel1698/meupetshop/blob/main/Alimentador_Auto_Cao_Gato.jpg?raw=true"
+                      alt="Alimentador Auto Cao e Gato.jpg"
+                      class="contorno-img"
+                      width="200"
+                      height="150"
+                    />
+                    <figcaption class="fonte-produtos-servicos">Alimentador Automático Cão e Gato</figcaption>  
+                  </figure>
+                </label> <!-- Rótulo associado ao checkbox, contendo a imagem -->
+              </div>
+
+              <!-- Nono item: checkbox + imagem -->
+              <div class="item">
+                <input 
+                  type="checkbox"
+                  id="img9"
+                  name="produtos"
+                  value="Shampoo para Cães e Gatos"
+                />
+                <label for="img9" 
+                  ><figure>
+                    <img
+                      src="https://github.com/emanoel1698/meupetshop/blob/main/Shampoo_Caes_Gatos.jpg?raw=true"
+                      alt="Shampoo_Caes_Gatos.jpg"
+                      class="contorno-img"
+                      width="200"
+                      height="150"
+                    />
+                    <figcaption class="fonte-produtos-servicos">Shampoo para Cães e Gatos</figcaption>  
+                  </figure>
+                </label> <!-- Rótulo associado ao checkbox, contendo a imagem -->
+              </div>
+
+              <!-- Decimo item: checkbox + imagem -->
+              <div class="item">
+                <input 
+                  type="checkbox"
+                  id="img10"
+                  name="produtos"
+                  value="Casa N2 Dog Home"
+                />
+                <label for="img10" 
+                  ><figure>
+                    <img
+                      src="https://github.com/emanoel1698/meupetshop/blob/main/Casa_N2_Dog_Home.jpg?raw=true"
+                      alt="Casa_N2_Dog_Home.jpg"
+                      class="contorno-img"
+                      width="200"
+                      height="150"
+                    />
+                    <figcaption class="fonte-produtos-servicos">Casa N2 Dog Home</figcaption>  
+                  </figure>
+                </label> <!-- Rótulo associado ao checkbox, contendo a imagem -->
+              </div>
+          </div>  <!--Este Div fecha com <div class="conteiner"-->
+
+          </p>
+
+          <h2 class="minha-fonte" id="servicos">
+            <span class="material-icons cor-icone icone-maior">shopping_cart_checkout</span>
+            Solicite nossos serviços clicando sobre cada item:
+          </h2>
+
+          <div class="btn-checkbox">
+            <input
+              type="checkbox"
+              id="banho_tosa"
+              name="servicos"
+              value="Banho e Tosa"
+            />
+            <label for="banho_tosa" class="fonte-produtos-servicos"> Banho e Tosa</label> <!-- Rótulo associado ao checkbox -->
+          </div>
+
+          <!-- Botão estilizado para Serviço de Taxi Dog -->
+          <div class="btn-checkbox">
+            <input
+              type="checkbox"
+              id="taxi_dog"
+              name="servicos"
+              value="Taxi Dog"
+            />
+            <label for="taxi_dog" class="fonte-produtos-servicos"> Taxi Dog</label> <!-- Rótulo associado ao checkbox -->
+          </div>
+
+          <!-- Botão estilizado para Serviço de Adestramento -->
+          <div class="btn-checkbox">
+            <input
+              type="checkbox"
+              id="adestramento"
+              name="servicos"
+              value="Adestramento"
+            />
+            <label for="adestramento" class="fonte-produtos-servicos"> Adestramento</label> <!-- Rótulo associado ao checkbox -->
+          </div>
+
+            <!-- Botão estilizado para Serviço de Pet Sitter -->
+          <div class="btn-checkbox">
+            <input
+              type="checkbox"
+              id="servico_pet_sitter"
+              name="servicos"
+              value="Servico Pet Sitter"
+            />
+            <label for="servico_pet_sitter" class="fonte-produtos-servicos"> Serviço de Pet Sitter</label> <!-- Rótulo associado ao checkbox -->
+          </div>
+
+          <!-- Botão estilizado para Consulta Veterinária -->
+          <div class="btn-checkbox">
+            <input
+              type="checkbox"
+              id="consulta_veterinaria"
+              name="servicos"
+              value="Consulta Veterinária"
+            />
+            <label for="consulta_veterinaria" class="fonte-produtos-servicos"> Consulta Veterinária</label> <!-- Rótulo associado ao checkbox -->
+          </div>
+
+          <!-- Botão estilizado para Fisioterapia e Reabilitação -->
+          <div class="btn-checkbox">
+            <input
+              type="checkbox"
+              id="Fisioterapia_Reabilitação"
+              name="servicos"
+              value="Fisioterapia e Reabilitação"
+            />
+            <label for="Fisioterapia_Reabilitação" class="fonte-produtos-servicos"> Fisioterapia e Reabilitação</label> <!-- Rótulo associado ao checkbox -->
+          </div>
+
+          <!-- Botão estilizado para Massagem e Acupuntura -->
+          <div class="btn-checkbox">
+            <input
+              type="checkbox"
+              id="Massagem_Acupuntura"
+              name="servicos"
+              value="Massagem e Acupuntura"
+            />
+            <label for="Massagem_Acupuntura" class="fonte-produtos-servicos"> Massagem e Acupuntura</label> <!-- Rótulo associado ao checkbox -->
+          </div>
+
+          <!-- Botão estilizado para Creche para Pets (Daycare) -->
+          <div class="btn-checkbox">
+            <input
+              type="checkbox"
+              id="Creche_Pets"
+              name="servicos"
+              value="Creche para Pets (Daycare)"
+            />
+            <label for="Creche_Pets" class="fonte-produtos-servicos"> Creche para Pets (Daycare)</label> <!-- Rótulo associado ao checkbox -->
+          </div>
+
+          <!-- Botão estilizado para Fotografia de Pets -->
+          <div class="btn-checkbox">
+            <input
+              type="checkbox"
+              id="Fotografia_Pets"
+              name="servicos"
+              value="Fotografia de Pets"
+            />
+            <label for="Fotografia_Pets" class="fonte-produtos-servicos"> Fotografia de Pets</label> <!-- Rótulo associado ao checkbox -->
+          </div>
+
+          <!-- Botão estilizado para Eventos e Atividades -->
+          <div class="btn-checkbox">
+            <input
+              type="checkbox"
+              id="Eventos_Atividades"
+              name="servicos"
+              value="Eventos e Atividades"
+            />
+            <label for="Eventos_Atividades" class="fonte-produtos-servicos"> Eventos e Atividades</label> <!-- Rótulo associado ao checkbox -->
+          </div>
+
+          <p align="left">
+            <h2 class="minha-fonte">
+              <span class="material-icons cor-icone icone-maior">local_shipping</span>
+              Após selecionar nossos produtos e serviços, basta enviar:
+            </h2>
+            <input type="submit" value="Enviar" class="enviar" />
+
+            <input type="reset" value="Limpar Dados" class="limpar" />
+          </p>
+        </form>
+      <!-- Fecha a seção de Produtos e Serviços --> 
+      </section>
+
+      <!--Seção Nossa História do Petshop-->
+      <section id="nossahistoria">
+        <h2 class="minha-fonte" id="sobre">
+          <span class="material-icons cor-icone icone-maior">volunteer_activism</span>
+          Nossa História:
+        </h2>
+        <p>O PetShop foi fundado em 2020 com o objetivo de oferecer produtos e serviços de qualidade para os pets.</p>
+        
+        <p>Desde o início, a “Vitrine Pet” se destacou pelo carinho e dedicação com que trata cada cliente e seus amados animais de estimação.</p>
+        
+        <p>Ao longo dos anos, a “Vitrine Pet” evoluiu significativamente, ampliando sua gama de produtos e serviços para atender às necessidades crescentes dos pets e seus donos.</p>
+        
+        <p>Hoje, oferecemos uma vasta seleção de rações premium, como a Ração Dog Health Cão Adultos, que garante uma nutrição balanceada e saudável para cães adultos, e a Ração Dog Health Cão Filhote, especialmente formulada para o crescimento saudável dos filhotes.</p>
+        
+        <p>Para os amantes de gatos, temos a Ração Gato Adulto, que proporciona todos os nutrientes essenciais para a saúde e bem-estar dos felinos.</p>
+        
+        <p>Além dos produtos de alta qualidade, a “Vitrine Pet” se orgulha de oferecer serviços excepcionais, como banho e tosa, consultas veterinárias e um atendimento personalizado que faz toda a diferença.</p>
+        
+        <p>Cada membro da nossa equipe é apaixonado por animais e comprometido em proporcionar a melhor experiência possível para nossos clientes.</p>
+        
+        <h2 class="minha-fonte">
+          Nossa Missão:
+        </h2>
+        <p>A missão da “Vitrine Pet” é garantir que cada pet receba o cuidado, a atenção e os produtos de alta qualidade que merece, promovendo a saúde, o bem-estar e a felicidade dos animais de estimação e a tranquilidade dos seus donos.</p>
+        
+        <h2 class="minha-fonte">
+          Nossos Valores:
+        </h2>
+        <p><strong>Carinho:</strong> Tratar cada pet com o amor e a dedicação que eles merecem.</p>
+        <p><strong>Qualidade:</strong> Oferecer produtos e serviços de excelência para a saúde e o bem-estar dos animais.</p>
+        <p><strong>Inovação:</strong> Estar sempre em busca de novas maneiras de melhorar e inovar nossos serviços.</p>
+        <p><strong>Confiança:</strong> Proporcionar um atendimento personalizado e de confiança para os nossos clientes.</p>
+        <p><strong>Paixão:</strong> Compromisso com a paixão pelos animais em todas as ações.</p>
+        
+        <p>A dedicação da “Vitrine Pet” vai além dos produtos e serviços.</p>
+        
+        <p>Estamos sempre em busca de novas maneiras de melhorar e inovar, garantindo que cada pet receba o cuidado e a atenção que merece.</p>
+        
+        <p>Nosso compromisso com a qualidade e o bem-estar dos animais é o que nos motiva a continuar crescendo e evoluindo.</p>
+        
+        <p>Venha nos visitar e descubra por que a “Vitrine Pet” é a escolha certa para quem ama e cuida dos seus pets com carinho e dedicação.</p>
+        
+      </section> <!-- Fecha - Seção Nossa História-->
+
+      <!--Seção Depoimento de Clientes-->
+      <section id="depoimentoclientes" >
+        <h2 class="minha-fonte">
+          <span class="material-icons cor-icone icone-maior">connect_without_contact</span>
+          Depoimento de Clientes:
+        </h2>
+
+        <!-- Contêiner para os depoimentos -->
+        <div class="depoimentos-container">
+          <!-- Depoimento serve de contêiner para cada depoimente individual de cliente. -->
+          <!-- Depoimento 1 -->
+          <div class="depoimento">
+            <span class="data-depoimento">01/10/2024</span> 
+            <!-- Foto do cliente 1 -->
+            <img 
+              src="https://github.com/emanoel1698/meupetshop/blob/main/Alberto%20da%20Fonseca.jpeg?raw=true" 
+              alt="Alberto da Fonseca"
+              class="foto-cliente"
+              >
+              <!-- Nome do cliente 1 -->
+              <p class="nome-cliente">Alberto da Fonseca</p>
+              <!-- Texto do depoimento do cliente 1 -->
+              <blockquote class="texto-depoimento">
+                "Adorei os produtos da Vitrine Pet! Recomendo a todos."
+              </blockquote>
+          </div> <!-- Fecha depoimento 1 -->
+          
+          <!-- Depoimento 2 -->
+          <div class="depoimento">
+            <span class="data-depoimento">28/09/2024</span> 
+            <!-- Foto do cliente 2 -->
+            <img 
+              src="https://github.com/emanoel1698/meupetshop/blob/main/Joice%20Cabral.jpeg?raw=true" 
+              alt="Joice Cabral"
+              class="foto-cliente"
+              >
+              <!-- Nome do cliente 2 -->
+              <p class="nome-cliente">Joice Cabral</p>
+              <!-- Texto do depoimento do cliente 2 -->
+              <blockquote class="texto-depoimento">
+                "Excelente atendimento! Meus cães adoram os brinquedos do PetShop!"
+              </blockquote>
+          </div> <!-- Fecha <div> depoimento 2 -->
+
+            <!-- Depoimento 3 -->
+          <div class="depoimento">
+            <span class="data-depoimento">15/09/2024</span> 
+            <!-- Foto do cliente 3 -->
+            <img 
+              src="https://github.com/emanoel1698/meupetshop/blob/main/Mirela%20da%20Silva.jpeg?raw=true" 
+              alt="Mirela da Silva"
+              class="foto-cliente"
+              >
+              <!-- Nome do cliente 3 -->
+              <p class="nome-cliente">Mirela da Silva</p>
+              <!-- Texto do depoimento do cliente 3 -->
+              <blockquote class="texto-depoimento">
+                "Usei o serviço de pet sitter em outros lugares e como o da Vitrine Pet, não
+                tem igual, excelente o cuidado e muito confiável, recomendo."
+              </blockquote>
+          </div> <!-- Fecha <div> depoimento 3 -->
+
+          <!-- Depoimento 4 -->
+          <div class="depoimento">
+            <span class="data-depoimento">15/09/2024</span> 
+            <!-- Foto do cliente 4 -->
+            <img 
+              src="https://github.com/emanoel1698/meupetshop/blob/main/Guilherme%20Macedo.jpeg?raw=true" 
+              alt="Guilherme Macedo"
+              class="foto-cliente"
+              >
+              <!-- Nome do cliente 4 -->
+              <p class="nome-cliente">Guilherme Macedo</p>
+              <!-- Texto do depoimento do cliente 4 -->
+              <blockquote class="texto-depoimento">
+                "A qualidade dos produtos é excepcional, além de um atendimento de primeira!"
+              </blockquote>
+          </div> <!-- Fecha <div> depoimento 4 -->
+
+          <!-- Depoimento 5 -->
+          <div class="depoimento">
+            <span class="data-depoimento">20/08/2024</span> 
+            <!-- Foto do cliente 5 -->
+            <img 
+              src="https://github.com/emanoel1698/meupetshop/blob/main/Julia%20Mendes.jpeg?raw=true" 
+              alt="Julia Mendes"
+              class="foto-cliente"
+              >
+              <!-- Nome do cliente 5 -->
+              <p class="nome-cliente">Julia Mendes</p>
+              <!-- Texto do depoimento do cliente 5 -->
+              <blockquote class="texto-depoimento">
+                "Os funcionários são super atenciosos e sempre prontos para ajudar. Nota 10!"
+              </blockquote>
+          </div> <!-- Fecha <div> depoimento 5 -->
+
+          <!-- Depoimento 6 -->
+          <div class="depoimento">
+            <span class="data-depoimento">02/07/2024</span> 
+            <!-- Foto do cliente 6 -->
+            <img 
+              src="https://github.com/emanoel1698/meupetshop/blob/main/Joao%20Alfredo%20Dias.jpeg?raw=true" 
+              alt="Joao Alfredo Dias"
+              class="foto-cliente"
+              >
+              <!-- Nome do cliente 6 -->
+              <p class="nome-cliente">Joao Alfredo Dias</p>
+              <!-- Texto do depoimento do cliente 6 -->
+              <blockquote class="texto-depoimento">
+                "Confio plenamente na Vitrine Pet para cuidar dos meus bichinhos!"
+              </blockquote>
+          </div> <!-- Fecha <div> depoimento 6 -->
+
+          <!-- Depoimento 7 -->
+          <div class="depoimento">
+            <span class="data-depoimento">25/06/2024</span>
+            <!-- Foto do cliente 7 -->
+            <img 
+              src="https://github.com/emanoel1698/meupetshop/blob/main/Raquel%20Duarte.jpeg?raw=true" 
+              alt="Raquel Duarte"
+              class="foto-cliente"
+              >
+              <!-- Nome do cliente 7 -->
+              <p class="nome-cliente">Raquel Duarte</p>
+              <!-- Texto do depoimento do cliente 7 -->
+              <blockquote class="texto-depoimento">
+                "O serviço de banho e tosa é impecável. Meu pet sempre sai feliz!"
+              </blockquote>
+          </div> <!-- Fecha <div> depoimento 7 -->
+        </div> <!-- Fecha - Com <div> Contêiner para os depoimentos -->
+      </section> <!-- Fecha <section> Seção Depoimento de Clientes-->
+
+      <section id="contatos" >
+        <h2 class="minha-fonte">
+          <span class="material-icons cor-icone icone-maior">perm_phone_msg</span>
+          Nossos Contatos:
+        </h2>
+        <p>Endereço: Rua Dr. João Pessoa, 499</p>
+        <p>Bairro: Centro</p>
+        <p>Cidade: Ribeirão Claro - Estado: PR</p>
+        <p>CEP: 86410-000</p>
+        <p>
+        <p>Telefone: (43) 95751-4228</p>
+        <p>
+        <p>Email: <a href="mailto:seupetmaisfeliz@vitrinepet.com?subject=Tire suas dúvidas">seupetmaisfeliz@vitrinepet.com</a></p>
+      </section>
+      <footer>
+        <p>&copy; 2024 vitrine Pet.Todos os direitos reservados.</p>
+      </footer>
+  </body>
+</html>
